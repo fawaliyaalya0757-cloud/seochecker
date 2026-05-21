@@ -1,66 +1,92 @@
 
 <style>
-* { box-sizing: border-box; }
-body { margin: 0; }
-.wrap { padding: 1.5rem 0; }
-.top-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; }
-.top-bar h2 { font-size: 19px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
-.logo-dot { width: 28px; height: 28px; border-radius: 8px; background: #185FA5; display: flex; align-items: center; justify-content: center; }
-.logo-dot i { color: #E6F1FB; font-size: 15px; }
-.input-row { display: flex; gap: 8px; margin-bottom: 1.75rem; }
-.input-row input { flex: 1; font-size: 14px; }
-.input-row button { padding: 0 20px; font-size: 14px; white-space: nowrap; }
-.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
-.mcard { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
-.mcard .mc-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; }
-.mcard .mc-val { font-size: 26px; font-weight: 500; line-height: 1; }
-.mcard .mc-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; }
-.mcard .mc-bar { height: 3px; border-radius: 2px; background: var(--color-border-tertiary); margin-top: 8px; overflow: hidden; }
-.mcard .mc-fill { height: 100%; border-radius: 2px; }
-.section-hd { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 10px; }
-.backlinks-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
-.backlinks-table th { text-align: left; font-weight: 500; font-size: 11px; color: var(--color-text-secondary); padding: 6px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-secondary); }
-.backlinks-table td { padding: 9px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.backlinks-table tr:last-child td { border-bottom: none; }
-.backlinks-table tr:hover td { background: var(--color-background-secondary); }
-.bl-wrap { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; margin-bottom: 1.5rem; }
-.qual-badge { font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 500; display: inline-block; }
-.q-high { background: #EAF3DE; color: #3B6D11; }
-.q-med { background: #FAEEDA; color: #633806; }
-.q-low { background: #FCEBEB; color: #791F1F; }
-.q-spam { background: #F1EFE8; color: #444441; }
-.domains-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-bottom: 1.5rem; }
-.dom-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 10px 14px; }
-.dom-card .dc-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.hk { background: #0a0a0a; padding: 1.5rem; font-family: 'Courier New', monospace; color: #00ff41; min-height: 100px; }
+.hk * { font-family: 'Courier New', monospace; }
+.hk-topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; border-bottom: 1px solid #00ff4133; padding-bottom: 14px; }
+.hk-logo { width: 32px; height: 32px; border: 1px solid #00ff41; display: flex; align-items: center; justify-content: center; }
+.hk-logo i { color: #00ff41; font-size: 16px; }
+.hk-title { font-size: 16px; color: #00ff41; letter-spacing: .12em; }
+.hk-title span { color: #888; }
+.hk-cursor { display: inline-block; width: 8px; height: 14px; background: #00ff41; vertical-align: middle; animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hk-input-row { display: flex; gap: 8px; margin-bottom: 1.5rem; align-items: center; }
+.hk-prompt { color: #00ff41; font-size: 13px; white-space: nowrap; }
+.hk-input-row input {
+  flex: 1; background: #0a0a0a; border: none; border-bottom: 1px solid #00ff4166;
+  color: #00ff41; font-size: 13px; font-family: 'Courier New', monospace;
+  padding: 6px 4px; outline: none; caret-color: #00ff41; border-radius: 0;
+}
+.hk-input-row input::placeholder { color: #00ff4144; }
+.hk-input-row input:focus { border-bottom-color: #00ff41; }
+.hk-btn {
+  background: transparent; border: 1px solid #00ff41; color: #00ff41;
+  font-family: 'Courier New', monospace; font-size: 12px; padding: 6px 14px;
+  cursor: pointer; letter-spacing: .08em; border-radius: 0;
+}
+.hk-btn:hover { background: #00ff4122; }
+.hk-btn:active { background: #00ff4144; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+.mcard { background: #0f0f0f; border: 1px solid #00ff4133; padding: 12px; }
+.mcard .mc-label { font-size: 10px; color: #00ff4199; margin-bottom: 6px; letter-spacing: .1em; }
+.mcard .mc-val { font-size: 22px; font-weight: 500; line-height: 1; }
+.mcard .mc-sub { font-size: 10px; color: #00ff4166; margin-top: 4px; }
+.mcard .mc-bar { height: 2px; background: #00ff4122; margin-top: 8px; }
+.mcard .mc-fill { height: 100%; }
+.sec-hd { font-size: 11px; color: #00ff4199; letter-spacing: .12em; margin: 1.25rem 0 10px; }
+.sec-hd::before { content: '// '; color: #00ff4155; }
+.bl-wrap { border: 1px solid #00ff4133; margin-bottom: 1.25rem; background: #0f0f0f; overflow: hidden; }
+.bl-table { width: 100%; border-collapse: collapse; font-size: 11px; table-layout: fixed; }
+.bl-table th { text-align: left; font-weight: 400; color: #00ff4199; padding: 7px 10px; border-bottom: 1px solid #00ff4133; letter-spacing: .08em; background: #141414; }
+.bl-table td { padding: 8px 10px; border-bottom: 1px solid #0f1f0f; color: #00cc33; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bl-table tr:last-child td { border-bottom: none; }
+.bl-table tr:hover td { background: #0f1f0f; }
+.qbadge { font-size: 10px; padding: 2px 7px; letter-spacing: .06em; display: inline-block; border: 1px solid; }
+.q-high { border-color: #00ff41; color: #00ff41; }
+.q-med { border-color: #ffb700; color: #ffb700; }
+.q-low { border-color: #ff4141; color: #ff4141; }
+.q-spam { border-color: #888; color: #888; }
+.dom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+.dom-card { background: #0f0f0f; border: 1px solid #00ff4333; padding: 10px 12px; }
+.dom-card .dc-name { font-size: 11px; color: #00ff4199; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dom-card .dc-da { font-size: 20px; font-weight: 500; }
-.dom-card .dc-links { font-size: 11px; color: var(--color-text-secondary); }
-.empty-state { text-align: center; padding: 3rem 1rem; color: var(--color-text-secondary); font-size: 14px; }
-.empty-state i { font-size: 36px; display: block; margin-bottom: 12px; color: var(--color-border-tertiary); }
-.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.5rem 0; }
-.donut-wrap { display: flex; align-items: center; gap: 20px; margin-bottom: 1.5rem; }
-.donut-legend { display: flex; flex-direction: column; gap: 6px; }
-.leg-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-primary); }
-.leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.note { font-size: 12px; color: var(--color-text-secondary); margin-top: 1rem; padding: 10px 14px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); }
+.dom-card .dc-links { font-size: 10px; color: #00ff4166; margin-top: 3px; }
+.donut-row { display: flex; align-items: center; gap: 24px; margin-bottom: 1.25rem; }
+.leg { display: flex; flex-direction: column; gap: 6px; }
+.leg-item { display: flex; align-items: center; gap: 8px; font-size: 11px; }
+.leg-dot { width: 8px; height: 8px; flex-shrink: 0; }
+.scan-line { font-size: 11px; color: #00ff4188; background: #0f1f0f; border: 1px solid #00ff4133; padding: 8px 12px; margin-top: 1rem; letter-spacing: .04em; }
+.scan-line i { margin-right: 6px; }
+.hk-ask-btn { background: transparent; border: 1px solid #00ff4166; color: #00ff41; font-family: 'Courier New', monospace; font-size: 11px; padding: 7px 14px; cursor: pointer; letter-spacing: .06em; margin-top: 8px; border-radius: 0; }
+.hk-ask-btn:hover { background: #00ff4122; border-color: #00ff41; }
+.empty { text-align: center; padding: 3rem 1rem; color: #00ff4155; font-size: 13px; letter-spacing: .08em; }
+.empty i { font-size: 32px; display: block; margin-bottom: 12px; color: #00ff4133; }
+.tag-df { font-size: 10px; padding: 2px 6px; border: 1px solid; display: inline-block; }
+.tag-do { border-color: #00ff4166; color: #00ff41; }
+.tag-no { border-color: #88888866; color: #888; }
 </style>
 
-<div class="wrap">
-<h2 class="sr-only">SEO Authority & Backlink Checker</h2>
+<div class="hk">
+<h2 class="sr-only">SEO Authority Checker — Dark Hacker Theme</h2>
 
-<div class="top-bar">
-  <div class="logo-dot"><i class="ti ti-chart-arcs" aria-hidden="true"></i></div>
-  <h2>SEO authority checker</h2>
+<div class="hk-topbar">
+  <div class="hk-logo"><i class="ti ti-terminal-2" aria-hidden="true"></i></div>
+  <div>
+    <div class="hk-title">SEO_AUTHORITY_CHECKER <span>v2.0</span> <span class="hk-cursor"></span></div>
+    <div style="font-size:10px; color:#00ff4155; letter-spacing:.08em; margin-top:2px;">backlink / DA / PA / semrush rank / domain quality</div>
+  </div>
 </div>
 
-<div class="input-row">
-  <input type="text" id="domInput" placeholder="masukkan domain, misal: tokopedia.com" />
-  <button onclick="analyze()"><i class="ti ti-scan" aria-hidden="true"></i> Analisis</button>
+<div class="hk-input-row">
+  <span class="hk-prompt">root@seo:~$</span>
+  <input type="text" id="domInput" placeholder="scan target.com..." />
+  <button class="hk-btn" onclick="analyze()"><i class="ti ti-radar" aria-hidden="true"></i> SCAN</button>
 </div>
 
 <div id="main">
-  <div class="empty-state">
-    <i class="ti ti-planet" aria-hidden="true"></i>
-    masukkan domain untuk memulai analisis
+  <div class="empty">
+    <i class="ti ti-terminal" aria-hidden="true"></i>
+    awaiting target domain...<span class="hk-cursor"></span>
   </div>
 </div>
 </div>
@@ -73,34 +99,26 @@ function seededRand(seed) {
     return (s >>> 0) / 0xffffffff;
   };
 }
-
 function hashStr(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
   return Math.abs(h);
 }
-
 function getColor(score) {
-  if (score >= 70) return '#639922';
-  if (score >= 45) return '#BA7517';
-  return '#E24B4A';
+  if (score >= 70) return '#00ff41';
+  if (score >= 45) return '#ffb700';
+  return '#ff4141';
 }
-
-function qualLabel(score) {
-  if (score >= 70) return ['Tinggi', 'q-high'];
-  if (score >= 45) return ['Sedang', 'q-med'];
-  if (score >= 25) return ['Rendah', 'q-low'];
-  return ['Spam', 'q-spam'];
+function qualLabel(s) {
+  if (s >= 70) return ['HIGH', 'q-high'];
+  if (s >= 45) return ['MED', 'q-med'];
+  if (s >= 25) return ['LOW', 'q-low'];
+  return ['SPAM', 'q-spam'];
 }
-
 function fmtNum(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
   if (n >= 1000) return (n/1000).toFixed(1) + 'K';
   return n.toString();
-}
-
-function semrushFmt(n) {
-  return '#' + n.toLocaleString('id-ID');
 }
 
 const FAKE_DOMAINS = [
@@ -117,8 +135,7 @@ function analyze() {
   const r = seededRand(seed);
 
   const da = Math.round(20 + r() * 75);
-  const pa = Math.round(da - 10 + r() * 20);
-  const paClamped = Math.max(10, Math.min(100, pa));
+  const pa = Math.max(10, Math.min(100, Math.round(da - 10 + r() * 20)));
   const semrank = Math.round(50000 + r() * 9950000);
   const totalBL = Math.round(500 + r() * 2000000);
   const refDomains = Math.round(totalBL * (0.003 + r() * 0.05));
@@ -127,20 +144,19 @@ function analyze() {
   const highPct = Math.round(30 + r() * 40);
   const medPct = Math.round(20 + r() * 25);
   const lowPct = Math.round(10 + r() * 20);
-  const spamPct = 100 - highPct - medPct - lowPct;
+  const spamPct = Math.max(0, 100 - highPct - medPct - lowPct);
 
-  const blData = Array.from({length: 8}, (_, i) => {
+  const blData = Array.from({length: 7}, (_, i) => {
     const rs = seededRand(seed + i * 99);
     const srcDomain = FAKE_DOMAINS[Math.floor(rs() * FAKE_DOMAINS.length)];
     const blDA = Math.round(20 + rs() * 75);
-    const blPA = Math.round(blDA - 8 + rs() * 16);
+    const blPA = Math.max(10, Math.min(100, Math.round(blDA - 8 + rs() * 16)));
     const qs = Math.round(20 + rs() * 78);
     const ql = qualLabel(qs);
-    const anchors = ['brand','keyword','url','baca juga','klik di sini','artikel terkait','referensi'];
+    const anchors = ['brand','keyword','url','baca juga','klik sini','referensi','artikel'];
     const anchor = anchors[Math.floor(rs() * anchors.length)];
-    const types = ['dofollow','dofollow','dofollow','nofollow'];
-    const type = types[Math.floor(rs() * types.length)];
-    return { srcDomain, blDA, blPA: Math.max(10, Math.min(100, blPA)), qs, ql, anchor, type };
+    const type = rs() > 0.3 ? 'dofollow' : 'nofollow';
+    return { srcDomain, blDA, blPA, qs, ql, anchor, type };
   });
 
   const topDomains = Array.from({length: 6}, (_, i) => {
@@ -152,113 +168,108 @@ function analyze() {
   }).sort((a,b) => b.dDA - a.dDA);
 
   const donutData = [
-    { label: 'tinggi', pct: highPct, color: '#639922' },
-    { label: 'sedang', pct: medPct, color: '#BA7517' },
-    { label: 'rendah', pct: lowPct, color: '#E24B4A' },
-    { label: 'spam', pct: Math.max(0, spamPct), color: '#888780' },
+    { label: 'HIGH', pct: highPct, color: '#00ff41' },
+    { label: 'MED',  pct: medPct,  color: '#ffb700' },
+    { label: 'LOW',  pct: lowPct,  color: '#ff4141' },
+    { label: 'SPAM', pct: spamPct, color: '#555' },
   ];
 
   const svgDonut = buildDonut(donutData);
 
+  const spamColor = spamScore < 15 ? '#00ff41' : spamScore < 30 ? '#ffb700' : '#ff4141';
+  const spamStatus = spamScore < 15 ? 'SAFE' : spamScore < 30 ? 'MODERATE' : 'DANGER';
+
   document.getElementById('main').innerHTML = `
-    <div class="metrics-grid">
-      ${metricCard('Domain Authority', da, '/100', '', da, getColor(da))}
-      ${metricCard('Page Authority', paClamped, '/100', '', paClamped, getColor(paClamped))}
-      ${metricCard('Semrush Rank', semrushFmt(semrank), '', 'global traffic rank', null, '#378ADD')}
-      ${metricCard('Total Backlink', fmtNum(totalBL), '', 'dari ' + fmtNum(refDomains) + ' domain', null, '#534AB7')}
-      ${metricCard('Spam Score', spamScore, '%', spamScore < 15 ? 'rendah — aman' : spamScore < 30 ? 'sedang' : 'tinggi — waspada', spamScore, spamScore < 15 ? '#639922' : spamScore < 30 ? '#BA7517' : '#E24B4A')}
+    <div style="font-size:11px; color:#00ff4166; margin-bottom:12px; letter-spacing:.06em;">
+      > scanning <span style="color:#00ff41">${domain}</span> ... <span style="color:#00ff41">DONE</span>
     </div>
 
-    <div class="divider"></div>
-    <p class="section-hd">distribusi kualitas backlink</p>
-    <div class="donut-wrap">
+    <div class="sec-hd">authority metrics</div>
+    <div class="metrics-grid">
+      ${mc('domain authority', da, '/100', '', da, getColor(da), true)}
+      ${mc('page authority', pa, '/100', '', pa, getColor(pa), true)}
+      ${mc('semrush rank', '#'+semrank.toLocaleString('id-ID'), '', 'global rank', null, '#00aaff', false)}
+      ${mc('total backlink', fmtNum(totalBL), '', fmtNum(refDomains)+' domains', null, '#aa88ff', false)}
+      ${mc('spam score', spamScore+'%', '', spamStatus, spamScore, spamColor, true)}
+    </div>
+
+    <div class="sec-hd">backlink quality distribution</div>
+    <div class="donut-row">
       ${svgDonut}
-      <div class="donut-legend">
-        ${donutData.map(d => `<div class="leg-item"><div class="leg-dot" style="background:${d.color}"></div>${d.label} <span style="font-weight:500; margin-left: auto; padding-left: 20px;">${d.pct}%</span></div>`).join('')}
+      <div class="leg">
+        ${donutData.map(d => `<div class="leg-item"><div class="leg-dot" style="background:${d.color}"></div><span style="color:${d.color}">${d.label}</span><span style="color:#00ff4166; margin-left:12px;">${d.pct}%</span></div>`).join('')}
       </div>
     </div>
 
-    <div class="divider"></div>
-    <p class="section-hd">sampel backlink teratas</p>
+    <div class="sec-hd">backlink sample scan</div>
     <div class="bl-wrap">
-      <table class="backlinks-table">
+      <table class="bl-table">
         <colgroup>
-          <col style="width: 38%">
-          <col style="width: 12%">
-          <col style="width: 12%">
-          <col style="width: 18%">
-          <col style="width: 14%">
-          <col style="width: 14%">
+          <col style="width:34%"><col style="width:10%"><col style="width:10%"><col style="width:16%"><col style="width:13%"><col style="width:17%">
         </colgroup>
         <thead>
-          <tr>
-            <th>sumber domain</th>
-            <th>DA</th>
-            <th>PA</th>
-            <th>anchor text</th>
-            <th>tipe</th>
-            <th>kualitas</th>
-          </tr>
+          <tr><th>SOURCE</th><th>DA</th><th>PA</th><th>ANCHOR</th><th>TYPE</th><th>QUALITY</th></tr>
         </thead>
         <tbody>
           ${blData.map(b => `
             <tr>
-              <td style="color: #185FA5;">${b.srcDomain}</td>
-              <td style="font-weight:500; color:${getColor(b.blDA)}">${b.blDA}</td>
-              <td style="font-weight:500; color:${getColor(b.blPA)}">${b.blPA}</td>
-              <td style="color: var(--color-text-secondary);">${b.anchor}</td>
-              <td><span style="font-size:11px; padding:2px 7px; border-radius:20px; background:${b.type==='dofollow'?'#E6F1FB':'#F1EFE8'}; color:${b.type==='dofollow'?'#0C447C':'#444441'}">${b.type}</span></td>
-              <td><span class="qual-badge ${b.ql[1]}">${b.ql[0]}</span></td>
+              <td style="color:#00aaff">${b.srcDomain}</td>
+              <td style="color:${getColor(b.blDA)}">${b.blDA}</td>
+              <td style="color:${getColor(b.blPA)}">${b.blPA}</td>
+              <td style="color:#00ff4199">${b.anchor}</td>
+              <td><span class="tag-df ${b.type==='dofollow'?'tag-do':'tag-no'}">${b.type.toUpperCase()}</span></td>
+              <td><span class="qbadge ${b.ql[1]}">${b.ql[0]}</span></td>
             </tr>
           `).join('')}
         </tbody>
       </table>
     </div>
 
-    <p class="section-hd">nice domain — linking root domains teratas</p>
-    <div class="domains-grid">
+    <div class="sec-hd">nice domain — top linking root domains</div>
+    <div class="dom-grid">
       ${topDomains.map(d => `
         <div class="dom-card">
           <div class="dc-name">${d.dom}</div>
-          <div class="dc-da" style="color:${getColor(d.dDA)}">${d.dDA}<span style="font-size:12px; color:var(--color-text-secondary); font-weight:400"> DA</span></div>
-          <div class="dc-links">${d.links} backlink</div>
+          <div class="dc-da" style="color:${getColor(d.dDA)}">${d.dDA}<span style="font-size:11px; font-weight:400; color:#00ff4155"> DA</span></div>
+          <div class="dc-links">${d.links} backlinks</div>
         </div>
       `).join('')}
     </div>
 
-    <button style="font-size: 13px; padding: 6px 14px; margin-top: 4px;" onclick="sendPrompt('Berikan rekomendasi strategi backlink untuk domain ${domain} berdasarkan hasil analisis DA ${da} dan Semrush Rank ${semrushFmt(semrank)}')">
-      <i class="ti ti-bulb" aria-hidden="true"></i> Minta rekomendasi strategi ↗
+    <button class="hk-ask-btn" onclick="sendPrompt('Berikan rekomendasi strategi backlink untuk domain ${domain} berdasarkan hasil analisis DA ${da} dan Semrush Rank #${semrank.toLocaleString()}')">
+      > MINTA REKOMENDASI STRATEGI ↗
     </button>
 
-    <div class="note">
-      <i class="ti ti-info-circle" aria-hidden="true" style="margin-right: 6px;"></i>
-      Data ini adalah simulasi untuk demo. Untuk data real-time, integrasikan dengan Moz API (DA/PA), Semrush API, atau Ahrefs API.
+    <div class="scan-line">
+      <i class="ti ti-info-circle" aria-hidden="true"></i>
+      [INFO] data simulasi. real-time data: Moz API / Semrush API / Ahrefs API
     </div>
   `;
 }
 
-function metricCard(label, val, suffix, sub, barVal, color) {
-  const bar = barVal !== null ? `<div class="mc-bar"><div class="mc-fill" style="width:${barVal}%;background:${color}"></div></div>` : '';
+function mc(label, val, suffix, sub, barVal, color, showBar) {
+  const bar = showBar && barVal !== null
+    ? `<div class="mc-bar"><div class="mc-fill" style="width:${barVal}%;background:${color}"></div></div>` : '';
   return `<div class="mcard">
-    <div class="mc-label">${label}</div>
-    <div class="mc-val" style="color:${color}">${val}<span style="font-size:13px; font-weight:400; color:var(--color-text-secondary)">${suffix}</span></div>
+    <div class="mc-label">${label.toUpperCase()}</div>
+    <div class="mc-val" style="color:${color}">${val}<span style="font-size:12px;font-weight:400;color:#00ff4166">${suffix}</span></div>
     ${sub ? `<div class="mc-sub">${sub}</div>` : ''}
     ${bar}
   </div>`;
 }
 
 function buildDonut(data) {
-  const cx = 60, cy = 60, r = 48, stroke = 22;
+  const cx = 55, cy = 55, r = 42, sw = 18;
   const circ = 2 * Math.PI * r;
   let offset = 0;
   let paths = '';
   data.forEach(d => {
     const dash = (d.pct / 100) * circ;
     const gap = circ - dash;
-    paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${d.color}" stroke-width="${stroke}" stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" />`;
+    paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${d.color}" stroke-width="${sw}" stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" />`;
     offset += dash;
   });
-  return `<svg width="120" height="120" viewBox="0 0 120 120" style="flex-shrink:0; transform: rotate(-90deg);">${paths}</svg>`;
+  return `<svg width="110" height="110" viewBox="0 0 110 110" style="flex-shrink:0;transform:rotate(-90deg);background:#0a0a0a;border:1px solid #00ff4122">${paths}</svg>`;
 }
 
 document.getElementById('domInput').addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
