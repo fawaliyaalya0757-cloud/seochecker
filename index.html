@@ -1,71 +1,103 @@
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: #0a0a0a !important; }
 .hk { background: #0a0a0a; padding: 1.5rem; font-family: 'Courier New', monospace; color: #00ff41; }
 .hk * { font-family: 'Courier New', monospace; }
-.hk-topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; border-bottom: 1px solid #00ff4133; padding-bottom: 14px; }
-.hk-logo { width: 32px; height: 32px; border: 1px solid #00ff41; display: flex; align-items: center; justify-content: center; }
-.hk-logo i { color: #00ff41; font-size: 16px; }
-.hk-title { font-size: 16px; color: #00ff41; letter-spacing: .12em; }
+.hk-topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; border-bottom: 1px solid #00ff4133; padding-bottom: 12px; }
+.hk-logo { width: 30px; height: 30px; border: 1px solid #00ff41; display: flex; align-items: center; justify-content: center; }
+.hk-logo i { color: #00ff41; font-size: 15px; }
+.hk-title { font-size: 15px; color: #00ff41; letter-spacing: .1em; }
 .hk-title span { color: #444; }
-.hk-cursor { display: inline-block; width: 8px; height: 14px; background: #00ff41; vertical-align: middle; animation: blink 1s step-end infinite; }
+.hk-cursor { display: inline-block; width: 7px; height: 13px; background: #00ff41; vertical-align: middle; animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
+.api-config { background: #0f0f0f; border: 1px solid #00ff4133; padding: 12px 14px; margin-bottom: 1.25rem; }
+.api-config-title { font-size: 10px; color: #00ff4199; letter-spacing: .12em; margin-bottom: 10px; }
+.api-config-title::before { content: '// '; color: #00ff4144; }
+.api-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.api-row:last-child { margin-bottom: 0; }
+.api-label { font-size: 11px; color: #00ff4188; white-space: nowrap; min-width: 90px; }
+.api-row input { flex: 1; background: #0a0a0a; border: none; border-bottom: 1px solid #00ff4144; color: #00ff41; font-size: 12px; padding: 5px 4px; outline: none; caret-color: #00ff41; border-radius: 0; }
+.api-row input::placeholder { color: #00ff4133; }
+.api-row input:focus { border-bottom-color: #00ff41; }
+.api-status { font-size: 10px; padding: 2px 7px; border: 1px solid; display: inline-block; letter-spacing: .06em; }
+.st-set { border-color: #00ff4166; color: #00ff41; }
+.st-unset { border-color: #44444466; color: #444; }
 .hk-input-row { display: flex; gap: 8px; margin-bottom: 1.5rem; align-items: center; }
 .hk-prompt { color: #00ff41; font-size: 13px; white-space: nowrap; }
-.hk-input-row input { flex: 1; background: #0a0a0a; border: none; border-bottom: 1px solid #00ff4166; color: #00ff41; font-size: 13px; font-family: 'Courier New', monospace; padding: 6px 4px; outline: none; caret-color: #00ff41; border-radius: 0; }
+.hk-input-row input { flex: 1; background: #0a0a0a; border: none; border-bottom: 1px solid #00ff4166; color: #00ff41; font-size: 13px; padding: 6px 4px; outline: none; caret-color: #00ff41; border-radius: 0; }
 .hk-input-row input::placeholder { color: #00ff4133; }
 .hk-input-row input:focus { border-bottom-color: #00ff41; }
-.hk-btn { background: #0a0a0a; border: 1px solid #00ff41; color: #00ff41; font-family: 'Courier New', monospace; font-size: 12px; padding: 6px 14px; cursor: pointer; letter-spacing: .08em; border-radius: 0; }
+.hk-btn { background: #0a0a0a; border: 1px solid #00ff41; color: #00ff41; font-size: 12px; padding: 6px 14px; cursor: pointer; letter-spacing: .08em; border-radius: 0; }
 .hk-btn:hover { background: #00ff4122; }
-.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
-.mcard { background: #0f0f0f; border: 1px solid #00ff4133; padding: 12px; }
-.mcard .mc-label { font-size: 10px; color: #00ff4199; margin-bottom: 6px; letter-spacing: .1em; }
-.mcard .mc-val { font-size: 22px; font-weight: 500; line-height: 1; }
-.mcard .mc-sub { font-size: 10px; color: #00ff4166; margin-top: 4px; }
-.mcard .mc-bar { height: 2px; background: #00ff4122; margin-top: 8px; }
-.mcard .mc-fill { height: 100%; }
 .sec-hd { font-size: 11px; color: #00ff4199; letter-spacing: .12em; margin: 1.25rem 0 10px; }
 .sec-hd::before { content: '// '; color: #00ff4144; }
-.bl-wrap { border: 1px solid #00ff4133; margin-bottom: 1.25rem; background: #0f0f0f; overflow: hidden; }
-.bl-table { width: 100%; border-collapse: collapse; font-size: 11px; table-layout: fixed; }
-.bl-table th { text-align: left; font-weight: 400; color: #00ff4199; padding: 7px 10px; border-bottom: 1px solid #00ff4133; letter-spacing: .08em; background: #141414; }
-.bl-table td { padding: 8px 10px; border-bottom: 1px solid #111f11; color: #00cc33; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: #0f0f0f; }
-.bl-table tr:last-child td { border-bottom: none; }
-.bl-table tr:hover td { background: #0f1f0f; }
-.qbadge { font-size: 10px; padding: 2px 7px; letter-spacing: .06em; display: inline-block; border: 1px solid; }
-.q-high { border-color: #00ff41; color: #00ff41; }
-.q-med { border-color: #ffb700; color: #ffb700; }
-.q-low { border-color: #ff4141; color: #ff4141; }
-.q-spam { border-color: #555; color: #555; }
-.dom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
-.dom-card { background: #0f0f0f; border: 1px solid #00ff4133; padding: 10px 12px; }
-.dom-card .dc-name { font-size: 11px; color: #00ff4199; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.dom-card .dc-da { font-size: 20px; font-weight: 500; }
-.dom-card .dc-links { font-size: 10px; color: #00ff4166; margin-top: 3px; }
-.donut-row { display: flex; align-items: center; gap: 24px; margin-bottom: 1.25rem; }
-.leg { display: flex; flex-direction: column; gap: 6px; }
-.leg-item { display: flex; align-items: center; gap: 8px; font-size: 11px; }
-.leg-dot { width: 8px; height: 8px; flex-shrink: 0; }
-.scan-line { font-size: 11px; color: #00ff4188; background: #0f1f0f; border: 1px solid #00ff4133; padding: 8px 12px; margin-top: 1rem; letter-spacing: .04em; }
-.hk-ask-btn { background: #0a0a0a; border: 1px solid #00ff4166; color: #00ff41; font-family: 'Courier New', monospace; font-size: 11px; padding: 7px 14px; cursor: pointer; letter-spacing: .06em; margin-top: 8px; border-radius: 0; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+.mcard { background: #0f0f0f; border: 1px solid #00ff4133; padding: 11px 12px; }
+.mcard .mc-label { font-size: 10px; color: #00ff4199; margin-bottom: 5px; letter-spacing: .1em; }
+.mcard .mc-val { font-size: 21px; font-weight: 500; line-height: 1; }
+.mcard .mc-sub { font-size: 10px; color: #00ff4166; margin-top: 3px; }
+.mcard .mc-bar { height: 2px; background: #00ff4122; margin-top: 7px; }
+.mcard .mc-fill { height: 100%; }
+.mcard .mc-src { font-size: 9px; color: #00ff4144; margin-top: 4px; letter-spacing: .06em; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+.info-card { background: #0f0f0f; border: 1px solid #00ff4133; padding: 11px 12px; }
+.info-card .ic-label { font-size: 10px; color: #00ff4199; margin-bottom: 5px; letter-spacing: .1em; }
+.info-card .ic-val { font-size: 13px; color: #00ff41; }
+.info-card .ic-sub { font-size: 10px; color: #00ff4166; margin-top: 3px; }
+.log { background: #0f0f0f; border: 1px solid #00ff4133; padding: 10px 12px; margin-bottom: 1.25rem; font-size: 11px; line-height: 1.8; }
+.log-line { color: #00ff4188; }
+.log-line.ok { color: #00ff41; }
+.log-line.err { color: #ff4141; }
+.log-line.warn { color: #ffb700; }
+.log-line.info { color: #00aaff; }
+.scan-line { font-size: 11px; color: #00ff4188; background: #0f1f0f; border: 1px solid #00ff4133; padding: 8px 12px; margin-top: 1rem; }
+.hk-ask-btn { background: #0a0a0a; border: 1px solid #00ff4166; color: #00ff41; font-size: 11px; padding: 7px 14px; cursor: pointer; letter-spacing: .06em; margin-top: 8px; border-radius: 0; }
 .hk-ask-btn:hover { background: #00ff4122; border-color: #00ff41; }
 .empty { text-align: center; padding: 3rem 1rem; color: #00ff4155; font-size: 13px; letter-spacing: .08em; }
 .empty i { font-size: 32px; display: block; margin-bottom: 12px; color: #00ff4133; }
-.tag-df { font-size: 10px; padding: 2px 6px; border: 1px solid; display: inline-block; }
-.tag-do { border-color: #00ff4166; color: #00ff41; }
-.tag-no { border-color: #55555566; color: #555; }
+.loading { font-size: 12px; color: #00ff4188; letter-spacing: .08em; padding: 1rem 0; }
+.loading span { animation: blink 1s step-end infinite; }
+.toggle-btn { background: transparent; border: none; color: #00ff4166; font-size: 11px; cursor: pointer; letter-spacing: .06em; padding: 0; text-decoration: underline; }
+.toggle-btn:hover { color: #00ff41; }
 </style>
 
 <div class="hk" id="app">
-<h2 class="sr-only">SEO Authority Checker — Full Dark Hacker Theme</h2>
+<h2 class="sr-only">SEO Authority Checker — Moz API + IPInfo Integration</h2>
 
 <div class="hk-topbar">
   <div class="hk-logo"><i class="ti ti-terminal-2" aria-hidden="true"></i></div>
   <div>
-    <div class="hk-title">SEO_AUTHORITY_CHECKER <span>v2.0</span> <span class="hk-cursor"></span></div>
-    <div style="font-size:10px; color:#00ff4144; letter-spacing:.08em; margin-top:2px;">backlink / DA / PA / semrush rank / domain quality</div>
+    <div class="hk-title">SEO_AUTHORITY_CHECKER <span>v3.0 [LIVE API]</span> <span class="hk-cursor"></span></div>
+    <div style="font-size:10px;color:#00ff4144;letter-spacing:.08em;margin-top:2px;">moz api + ipinfo.io — real data mode</div>
   </div>
+</div>
+
+<div class="api-config" id="apiConfig">
+  <div class="api-config-title">api key configuration</div>
+  <div class="api-row">
+    <span class="api-label">MOZ ACCESS ID</span>
+    <input type="text" id="mozId" placeholder="mozscape-xxxxxxxxxxxxxxxx" oninput="updateStatus()" />
+    <span class="api-status st-unset" id="mozIdSt">UNSET</span>
+  </div>
+  <div class="api-row">
+    <span class="api-label">MOZ SECRET KEY</span>
+    <input type="password" id="mozSecret" placeholder="••••••••••••••••••••••••" oninput="updateStatus()" />
+    <span class="api-status st-unset" id="mozSecSt">UNSET</span>
+  </div>
+  <div class="api-row">
+    <span class="api-label">IPINFO TOKEN</span>
+    <input type="text" id="ipToken" placeholder="optional — gratis tanpa token" oninput="updateStatus()" />
+    <span class="api-status st-set" id="ipSt">OPTIONAL</span>
+  </div>
+  <div style="margin-top:10px;display:flex;gap:12px;align-items:center;">
+    <button class="toggle-btn" onclick="toggleConfig()">[ sembunyikan config ]</button>
+    <span style="font-size:10px;color:#00ff4144;">
+      daftar gratis: <span style="color:#00aaff">moz.com/products/api</span>
+    </span>
+  </div>
+</div>
+<div id="configHidden" style="display:none;margin-bottom:1.25rem;">
+  <button class="toggle-btn" onclick="toggleConfig()">[ tampilkan api config ]</button>
 </div>
 
 <div class="hk-input-row">
@@ -77,7 +109,7 @@ html, body { background: #0a0a0a !important; }
 <div id="main">
   <div class="empty">
     <i class="ti ti-terminal" aria-hidden="true"></i>
-    awaiting target domain...<span class="hk-cursor"></span>
+    set api keys lalu masukkan domain<span class="hk-cursor"></span>
   </div>
 </div>
 </div>
@@ -87,152 +119,189 @@ document.documentElement.style.background = '#0a0a0a';
 document.body.style.background = '#0a0a0a';
 document.body.style.margin = '0';
 
+function toggleConfig() {
+  const cfg = document.getElementById('apiConfig');
+  const hidden = document.getElementById('configHidden');
+  if (cfg.style.display === 'none') { cfg.style.display = ''; hidden.style.display = 'none'; }
+  else { cfg.style.display = 'none'; hidden.style.display = 'block'; }
+}
+
+function updateStatus() {
+  const mozId = document.getElementById('mozId').value.trim();
+  const mozSec = document.getElementById('mozSecret').value.trim();
+  const idSt = document.getElementById('mozIdSt');
+  const secSt = document.getElementById('mozSecSt');
+  idSt.textContent = mozId ? 'SET' : 'UNSET';
+  idSt.className = 'api-status ' + (mozId ? 'st-set' : 'st-unset');
+  secSt.textContent = mozSec ? 'SET' : 'UNSET';
+  secSt.className = 'api-status ' + (mozSec ? 'st-set' : 'st-unset');
+}
+
+function addLog(container, text, type='log-line') {
+  const line = document.createElement('div');
+  line.className = 'log-line ' + type;
+  const ts = new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  line.textContent = `[${ts}] ${text}`;
+  container.appendChild(line);
+}
+
+function getColor(s) { return s >= 70 ? '#00ff41' : s >= 45 ? '#ffb700' : '#ff4141'; }
+
 function seededRand(seed) {
   let s = seed;
-  return function() { s = (s * 1664525 + 1013904223) & 0xffffffff; return (s >>> 0) / 0xffffffff; };
+  return () => { s = (s*1664525+1013904223)&0xffffffff; return (s>>>0)/0xffffffff; };
 }
 function hashStr(str) {
   let h = 0;
-  for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
+  for (let i=0;i<str.length;i++) h = (Math.imul(31,h)+str.charCodeAt(i))|0;
   return Math.abs(h);
 }
-function getColor(s) { return s >= 70 ? '#00ff41' : s >= 45 ? '#ffb700' : '#ff4141'; }
-function qualLabel(s) {
-  if (s >= 70) return ['HIGH','q-high'];
-  if (s >= 45) return ['MED','q-med'];
-  if (s >= 25) return ['LOW','q-low'];
-  return ['SPAM','q-spam'];
-}
-function fmtNum(n) {
-  if (n >= 1000000) return (n/1000000).toFixed(1)+'M';
-  if (n >= 1000) return (n/1000).toFixed(1)+'K';
-  return n.toString();
-}
 
-const FAKEDOMS = ['wordpress.org','medium.com','github.com','forbes.com','kompas.com','detik.com','tirto.id','kumparan.com','tribunnews.com','liputan6.com','cnnindonesia.com','tempo.co','bisnis.com','idntimes.com','republika.co.id'];
-
-function analyze() {
+async function analyze() {
   const raw = document.getElementById('domInput').value.trim().toLowerCase().replace(/https?:\/\//,'').replace(/\/.*/,'');
   if (!raw) return;
   const domain = raw;
+  const mozId = document.getElementById('mozId').value.trim();
+  const mozSec = document.getElementById('mozSecret').value.trim();
+  const ipToken = document.getElementById('ipToken').value.trim();
+
+  const main = document.getElementById('main');
+  main.innerHTML = `<div class="log" id="logBox"></div>`;
+  const logBox = document.getElementById('logBox');
+
+  addLog(logBox, `initiating scan for: ${domain}`, 'ok');
+
+  let mozData = null;
+  let ipData = null;
+
+  if (mozId && mozSec) {
+    addLog(logBox, 'connecting to Moz API...', 'info');
+    try {
+      const expires = Math.floor(Date.now()/1000) + 300;
+      const sigStr = `${mozId}\n${expires}`;
+      const enc = new TextEncoder();
+      const key = await crypto.subtle.importKey('raw', enc.encode(mozSec), {name:'HMAC',hash:'SHA-1'}, false, ['sign']);
+      const sig = await crypto.subtle.sign('HMAC', key, enc.encode(sigStr));
+      const b64 = btoa(String.fromCharCode(...new Uint8Array(sig)));
+      const authStr = btoa(`${mozId}:${b64}`);
+
+      const resp = await fetch(`https://lsapi.seomoz.com/v2/url_metrics`, {
+        method: 'POST',
+        headers: { 'Authorization': `Basic ${authStr}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ targets: [domain] })
+      });
+
+      if (resp.ok) {
+        const json = await resp.json();
+        mozData = json.results?.[0] || null;
+        addLog(logBox, `Moz API response OK — DA: ${Math.round(mozData?.domain_authority||0)}, PA: ${Math.round(mozData?.page_authority||0)}`, 'ok');
+      } else {
+        addLog(logBox, `Moz API error ${resp.status} — fallback ke simulasi`, 'err');
+      }
+    } catch(e) {
+      addLog(logBox, `Moz API failed: ${e.message} — fallback ke simulasi`, 'err');
+    }
+  } else {
+    addLog(logBox, 'Moz API key tidak diset — menggunakan simulasi', 'warn');
+  }
+
+  addLog(logBox, 'fetching IP & hosting info via IPInfo...', 'info');
+  try {
+    const tokenParam = ipToken ? `?token=${ipToken}` : '';
+    const resp = await fetch(`https://ipinfo.io/${domain.replace(/^www\./,'')}${tokenParam}`);
+    if (resp.ok) {
+      ipData = await resp.json();
+      addLog(logBox, `IPInfo OK — IP: ${ipData.ip}, org: ${ipData.org||'unknown'}`, 'ok');
+    } else {
+      addLog(logBox, `IPInfo error ${resp.status}`, 'err');
+    }
+  } catch(e) {
+    addLog(logBox, `IPInfo failed: ${e.message}`, 'err');
+  }
+
+  addLog(logBox, 'rendering results...', 'info');
+
   const seed = hashStr(domain);
   const r = seededRand(seed);
-  const da = Math.round(20 + r()*75);
-  const pa = Math.max(10, Math.min(100, Math.round(da - 10 + r()*20)));
-  const semrank = Math.round(50000 + r()*9950000);
-  const totalBL = Math.round(500 + r()*2000000);
-  const refDomains = Math.round(totalBL*(0.003 + r()*0.05));
-  const spamScore = Math.round(r()*35);
-  const highPct = Math.round(30 + r()*40);
-  const medPct = Math.round(20 + r()*25);
-  const lowPct = Math.round(10 + r()*20);
-  const spamPct = Math.max(0, 100 - highPct - medPct - lowPct);
+  const da = mozData ? Math.round(mozData.domain_authority||0) : Math.round(20+r()*75);
+  const pa = mozData ? Math.round(mozData.page_authority||0) : Math.max(10,Math.min(100,Math.round(da-10+r()*20)));
+  const spam = mozData ? Math.round((mozData.spam_score||0)*100) : Math.round(r()*35);
+  const bl = mozData ? (mozData.linking_root_domains||0) : Math.round(500+r()*200000);
+  const totalBL = mozData ? (mozData.inbound_links||0) : Math.round(bl*12);
 
-  const blData = Array.from({length:7},(_,i)=>{
-    const rs = seededRand(seed+i*99);
-    const src = FAKEDOMS[Math.floor(rs()*FAKEDOMS.length)];
-    const blDA = Math.round(20+rs()*75);
-    const blPA = Math.max(10,Math.min(100,Math.round(blDA-8+rs()*16)));
-    const qs = Math.round(20+rs()*78);
-    const ql = qualLabel(qs);
-    const anchors = ['brand','keyword','url','baca juga','klik sini','referensi','artikel'];
-    const anchor = anchors[Math.floor(rs()*anchors.length)];
-    const type = rs()>0.3?'dofollow':'nofollow';
-    return {src,blDA,blPA,ql,anchor,type};
-  });
+  const isMozReal = !!mozData;
+  const isIPReal = !!ipData;
 
-  const topDoms = Array.from({length:6},(_,i)=>{
-    const rs = seededRand(seed+i*7777);
-    const dom = FAKEDOMS[Math.floor(rs()*FAKEDOMS.length)];
-    const dDA = Math.round(30+rs()*65);
-    const links = Math.round(1+rs()*120);
-    return {dom,dDA,links};
-  }).sort((a,b)=>b.dDA-a.dDA);
+  const spamColor = spam<15?'#00ff41':spam<30?'#ffb700':'#ff4141';
+  const spamStatus = spam<15?'SAFE':spam<30?'MODERATE':'DANGER';
 
-  const donutData = [
-    {label:'HIGH',pct:highPct,color:'#00ff41'},
-    {label:'MED',pct:medPct,color:'#ffb700'},
-    {label:'LOW',pct:lowPct,color:'#ff4141'},
-    {label:'SPAM',pct:spamPct,color:'#444'},
-  ];
+  const ip = ipData?.ip || 'N/A';
+  const org = ipData?.org || 'unknown';
+  const city = ipData?.city || '?';
+  const country = ipData?.country || '?';
+  const region = ipData?.region || '?';
+  const timezone = ipData?.timezone || '?';
+  const hostname = ipData?.hostname || domain;
 
-  const spamColor = spamScore<15?'#00ff41':spamScore<30?'#ffb700':'#ff4141';
-  const spamStatus = spamScore<15?'SAFE':spamScore<30?'MODERATE':'DANGER';
+  const srcTag = (real, label) => real
+    ? `<span style="font-size:9px;color:#00ff41;letter-spacing:.05em"> [${label}]</span>`
+    : `<span style="font-size:9px;color:#ffb700;letter-spacing:.05em"> [sim]</span>`;
 
-  document.getElementById('main').innerHTML = `
-    <div style="font-size:11px;color:#00ff4166;margin-bottom:12px;letter-spacing:.06em;">
-      > scanning <span style="color:#00ff41">${domain}</span> ... <span style="color:#00ff41">DONE</span>
-    </div>
-    <div class="sec-hd">authority metrics</div>
+  main.innerHTML += `
+    <div class="sec-hd">authority metrics ${srcTag(isMozReal,'moz api')}</div>
     <div class="metrics-grid">
-      ${mc('domain authority',da,'/100','',da,getColor(da),true)}
-      ${mc('page authority',pa,'/100','',pa,getColor(pa),true)}
-      ${mc('semrush rank','#'+semrank.toLocaleString('id-ID'),'','global rank',null,'#00aaff',false)}
-      ${mc('total backlink',fmtNum(totalBL),'',fmtNum(refDomains)+' domains',null,'#aa88ff',false)}
-      ${mc('spam score',spamScore+'%','',spamStatus,spamScore,spamColor,true)}
+      ${mc('domain authority', da, '/100', '', da, getColor(da), true)}
+      ${mc('page authority', pa, '/100', '', pa, getColor(pa), true)}
+      ${mc('spam score', spam+'%', '', spamStatus, spam, spamColor, true)}
+      ${mc('linking domains', fmtNum(bl), '', 'root domains', null, '#aa88ff', false)}
+      ${mc('total backlinks', fmtNum(totalBL), '', 'inbound links', null, '#534AB7', false)}
     </div>
-    <div class="sec-hd">backlink quality distribution</div>
-    <div class="donut-row">
-      ${buildDonut(donutData)}
-      <div class="leg">
-        ${donutData.map(d=>`<div class="leg-item"><div class="leg-dot" style="background:${d.color}"></div><span style="color:${d.color}">${d.label}</span><span style="color:#00ff4155;margin-left:12px">${d.pct}%</span></div>`).join('')}
-      </div>
+
+    <div class="sec-hd">server & hosting info ${srcTag(isIPReal,'ipinfo')}</div>
+    <div class="info-grid">
+      ${ic('IP ADDRESS', ip, '')}
+      ${ic('HOSTNAME', hostname, '')}
+      ${ic('ORG / ASN', org, '')}
+      ${ic('LOKASI', city+', '+country, region)}
+      ${ic('TIMEZONE', timezone, '')}
+      ${ic('COUNTRY CODE', country, 'server location')}
     </div>
-    <div class="sec-hd">backlink sample scan</div>
-    <div class="bl-wrap">
-      <table class="bl-table">
-        <colgroup><col style="width:32%"><col style="width:10%"><col style="width:10%"><col style="width:16%"><col style="width:14%"><col style="width:18%"></colgroup>
-        <thead><tr><th>SOURCE</th><th>DA</th><th>PA</th><th>ANCHOR</th><th>TYPE</th><th>QUALITY</th></tr></thead>
-        <tbody>
-          ${blData.map(b=>`<tr>
-            <td style="color:#00aaff">${b.src}</td>
-            <td style="color:${getColor(b.blDA)}">${b.blDA}</td>
-            <td style="color:${getColor(b.blPA)}">${b.blPA}</td>
-            <td style="color:#00ff4199">${b.anchor}</td>
-            <td><span class="tag-df ${b.type==='dofollow'?'tag-do':'tag-no'}">${b.type.toUpperCase()}</span></td>
-            <td><span class="qbadge ${b.ql[1]}">${b.ql[0]}</span></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>
-    </div>
-    <div class="sec-hd">nice domain — top linking root domains</div>
-    <div class="dom-grid">
-      ${topDoms.map(d=>`<div class="dom-card">
-        <div class="dc-name">${d.dom}</div>
-        <div class="dc-da" style="color:${getColor(d.dDA)}">${d.dDA}<span style="font-size:11px;font-weight:400;color:#00ff4144"> DA</span></div>
-        <div class="dc-links">${d.links} backlinks</div>
-      </div>`).join('')}
-    </div>
-    <button class="hk-ask-btn" onclick="sendPrompt('Berikan rekomendasi strategi backlink untuk domain ${domain} berdasarkan hasil analisis DA ${da} dan Semrush Rank #${semrank.toLocaleString()}')">
+
+    <button class="hk-ask-btn" onclick="sendPrompt('Berikan rekomendasi strategi backlink untuk domain ${domain} berdasarkan DA ${da}, PA ${pa}, spam score ${spam}%, dan server di ${country}')">
       > MINTA REKOMENDASI STRATEGI ↗
     </button>
+
     <div class="scan-line">
       <i class="ti ti-info-circle" aria-hidden="true" style="margin-right:6px"></i>
-      [INFO] data simulasi. real-time: Moz API / Semrush API / Ahrefs API
+      ${isMozReal ? '[MOZ] data real dari Moz API' : '[SIM] DA/PA simulasi — set Moz API key untuk data real'} &nbsp;|&nbsp;
+      ${isIPReal ? '[IPINFO] data real' : '[IPINFO] gagal fetch'}
     </div>
   `;
 }
 
-function mc(label,val,suffix,sub,barVal,color,showBar) {
-  const bar = showBar && barVal!==null ? `<div class="mc-bar"><div class="mc-fill" style="width:${barVal}%;background:${color}"></div></div>` : '';
+function mc(label, val, suffix, sub, barVal, color, showBar) {
+  const bar = showBar && barVal !== null ? `<div class="mc-bar"><div class="mc-fill" style="width:${Math.min(barVal,100)}%;background:${color}"></div></div>` : '';
   return `<div class="mcard">
-    <div class="mc-label">${label.toUpperCase()}</div>
+    <div class="mc-label">${label}</div>
     <div class="mc-val" style="color:${color}">${val}<span style="font-size:12px;font-weight:400;color:#00ff4155">${suffix}</span></div>
     ${sub?`<div class="mc-sub">${sub}</div>`:''}
     ${bar}
   </div>`;
 }
 
-function buildDonut(data) {
-  const cx=55,cy=55,r=42,sw=18,circ=2*Math.PI*r;
-  let offset=0,paths='';
-  data.forEach(d=>{
-    const dash=(d.pct/100)*circ, gap=circ-dash;
-    paths+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${d.color}" stroke-width="${sw}" stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}"/>`;
-    offset+=dash;
-  });
-  return `<svg width="110" height="110" viewBox="0 0 110 110" style="flex-shrink:0;transform:rotate(-90deg);background:#0a0a0a;border:1px solid #00ff4122">${paths}</svg>`;
+function ic(label, val, sub) {
+  return `<div class="info-card">
+    <div class="ic-label">${label}</div>
+    <div class="ic-val">${val||'N/A'}</div>
+    ${sub?`<div class="ic-sub">${sub}</div>`:''}
+  </div>`;
 }
 
-document.getElementById('domInput').addEventListener('keydown', e=>{ if(e.key==='Enter') analyze(); });
+function fmtNum(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1)+'M';
+  if (n >= 1000) return (n/1000).toFixed(1)+'K';
+  return (n||0).toString();
+}
+
+document.getElementById('domInput').addEventListener('keydown', e => { if(e.key==='Enter') analyze(); });
 </script>
